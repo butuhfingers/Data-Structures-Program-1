@@ -46,7 +46,7 @@ public class Listing implements Comparable<Listing>{
     //Functions
     @Override
     public String toString(){
-        return "Name: " + this.name + " Age: " + this.age;
+        return "Name: " + this.getName() + " Age: " + this.getAge();
     }
     
     public int compareTo(Listing other){

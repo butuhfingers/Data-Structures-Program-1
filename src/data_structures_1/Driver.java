@@ -5,28 +5,35 @@
  */
 package data_structures_1;
 import java.util.Scanner;
-
 /**
  *
  * @author Recreational
  */
 public class Driver {
-    private static DataStructure<Listing> struct = new DataStructure<>();
+    private static DataStructure<Listing> struct = new DataStructure<Listing>();
     
     public static void main(String args[]){
+        System.out.println("INPUT: (Full Name), (Age)");
         //Create the data structure
         
         
         //Scan for input
         Scanner in = new Scanner(System.in);
-
+        
+        //Check for input and parse the data
         while(in.hasNext()) {
             String line = in.nextLine();
             
+            //Parse the input to bits and pieces
             String[] stats = parseInput(line);
-            addPerson(stats[0], Integer.parseInt(stats[1]));
             
+            if(stats[1].matches("\\d+")){
+                addPerson(stats[0], Integer.parseInt(stats[1]));
+            }else{
+                System.out.println("Not a valid number");
+            }
             struct.showAllListings();
+            System.out.println("INPUT: (Full Name), (Age)");
         }
     }
     
@@ -48,6 +55,6 @@ public class Driver {
     }
     
     private static void addPerson(String name, int age){
-        struct.addElt(new Listing(name, age));
+        struct.addListing(new Listing(name, age));
     }
 }

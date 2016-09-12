@@ -9,16 +9,17 @@ package data_structures_1;
  *
  * @author Recreational
  */
-public class DataStructure<E extends Comparable<E>>{
+public class DataStructure<T>{
 
     //Variables
-    private E[] data;
+    private T[] data;
     private int size = 100;
     private int next = 0;
 
 
     //Constructors
     public DataStructure(){
+        //Calls the DataStructure(int) constructor
         this(100);
     }
     
@@ -28,25 +29,21 @@ public class DataStructure<E extends Comparable<E>>{
         this.size = size;
         this.next = 0;
         
-        this.data = (E[])new Object[size];
+        this.data = (T[])new Object[size];
     }
     
     //Functions
-    public void addElt(E element){
-        data[next] = element;
-        
-        System.out.println("Added element");
-        //This will force it to overwrite the last element
-        if(next != size){
-            next++;
-        }     
+    public void addListing(T newListing){
+        data[next++] = newListing;
     }
     
     public void showAllListings(){
-        for(int i = 0;i < data.length;i++){
-            System.out.println(data.toString());
+        for(int i = 0;i < next;i++){
+            System.out.println(data[i].toString());  
         }
     }
     
-    private void iSort(){}
+    private void iSort(){
+    
+    }
 }
